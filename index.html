@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+    <meta name="theme-color" content="#111111">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Finger Chooser">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="icon" href="./icons/app-icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./icons/app-icon.svg">
+    <title>Finger Chooser</title>
+  </head>
+  <body>
+    <div id="stage">
+      <p id="msg">Everyone put a finger down</p>
+      <p id="count">0 / 10</p>
+    </div>
+
+    <div id="panel" class="hidden"></div>
+
+    <script src="./script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./service-worker.js').catch(err => console.warn('Offline setup could not be registered:', err));
+        });
+      }
+    </script>
+  </body>
+</html>
